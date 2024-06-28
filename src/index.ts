@@ -15,5 +15,4 @@ app.listen(envUtil.PORT, async () => {
 
     await mongoose.connect(envUtil.MONGO_URL)
     console.log("connected to mongodb")
-    
 });

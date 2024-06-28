@@ -1,10 +1,10 @@
 import express from 'express';
-import { createUserHandler} from "../controller/user.controller";
+import { createUserHandler, getUserHandler} from "../controller/user.controller";
+import { validate } from "../middleware/validation";
+import { createUserSchema, getUserSchema } from '../schema/user.schema';
 
 const router= express.Router();
 
-router.get('/', (req, res) =>{
-    res.status(200).send("Virus");
-});
-router.post('/', createUserHandler)
+router.get('/:id', validate(getUserSchema), getUserHandler)
+router.post('/', validate(createUserSchema), createUserHandler)
 export default router;
